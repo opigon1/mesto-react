@@ -1,0 +1,10 @@
+.popup__label {
+  position: relative;
+  max-width: 358px;
+  width: 100%;
+}
+
+
+.popup__label:not(:last-of-type) {
+  margin-bottom: 30px;
+}
