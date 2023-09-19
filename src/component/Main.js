@@ -1,34 +1,23 @@
 import React from "react";
-import { api } from "../utils/Api";
 import { Card } from "./Card";
+import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
 function Main(props) {
-  const [userName, setUserName] = React.useState("");
-  const [userDescription, setUserDescriprion] = React.useState("");
-  const [userAvatar, setUserAvatar] = React.useState("");
-  const [cards, setCards] = React.useState([]);
-
-  React.useEffect(() => {
-    api
-      .getAllInfo()
-      .then(([cardData, userData]) => {
-        setUserName(userData.name);
-        setUserDescriprion(userData.about);
-        setUserAvatar(userData.avatar);
-        setCards(cardData);
-      })
-      .catch((err) => console.log(err));
-  }, []);
+  const currentUser = React.useContext(CurrentUserContext);
 
   return (
     <main className="main">
       <section className="profile">
         <div className="profile__avatar-cover" onClick={props.onEditAvatar}>
-          <img src={userAvatar} alt="Аватарка" className="profile__avatar" />
+          <img
+            src={currentUser.avatar}
+            alt="Аватарка"
+            className="profile__avatar"
+          />
         </div>
         <div className="profile__info">
-          <h1 className="profile__name">{userName}</h1>
-          <p className="profile__status">{userDescription}</p>
+          <h1 className="profile__name">{currentUser.name}</h1>
+          <p className="profile__status">{currentUser.about}</p>
           <button
             className="profile__edit-button"
             type="button"
@@ -43,8 +32,14 @@ function Main(props) {
       </section>
       <section className="elements-section">
         <ul className="elements">
-          {cards.map((card) => (
-            <Card card={card} onCardClick={props.onCardClick} key={card._id} />
+          {props.cards.map((card) => (
+            <Card
+              card={card}
+              onCardClick={props.onCardClick}
+              key={card._id}
+              onCardLike={props.onCardLike}
+              onCardDelete={props.onCardDelete}
+            />
           ))}
         </ul>
       </section>

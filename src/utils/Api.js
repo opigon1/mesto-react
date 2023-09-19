@@ -48,13 +48,13 @@ class Api {
     });
   }
 
-  addCard(data) {
+  addCard({ name, link }) {
     return fetch(`${this.#url}cards`, {
       headers: this.#headers,
       method: "POST",
       body: JSON.stringify({
-        name: data.title,
-        link: data.link,
+        name,
+        link,
       }),
     }).then((res) => {
       return this.#handleResponce(res);
@@ -79,7 +79,7 @@ class Api {
       headers: this.#headers,
       method: "PATCH",
       body: JSON.stringify({
-        avatar: data.avatar,
+        avatar: data,
       }),
     }).then((res) => {
       return this.#handleResponce(res);
