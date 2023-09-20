@@ -71,14 +71,14 @@ function App() {
       .catch((err) => console.log(err));
   }
 
-  function handleUpdateAvatar({ data }) {
+  function handleUpdateAvatar({ avatar }) {
     api
-      .editUserAvatar(data)
+      .editUserAvatar(avatar)
       .then((newData) => {
         setCurrentUser(newData);
         closeAllPopups();
       })
-      .catch((err) => console.log(err));
+      .catch(console.error);
   }
 
   function handleCardLike(card) {

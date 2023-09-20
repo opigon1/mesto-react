@@ -9,10 +9,6 @@ class Api {
     this.#headers = headers;
   }
 
-  getAllInfo() {
-    return Promise.all([this.getCards(), this.getUserInfo()]);
-  }
-
   #handleResponce(res) {
     if (res.ok) {
       return res.json();
@@ -74,12 +70,12 @@ class Api {
     });
   }
 
-  editUserAvatar(data) {
+  editUserAvatar(link) {
     return fetch(`${this.#url}users/me/avatar`, {
       headers: this.#headers,
       method: "PATCH",
       body: JSON.stringify({
-        avatar: data,
+        avatar: link,
       }),
     }).then((res) => {
       return this.#handleResponce(res);

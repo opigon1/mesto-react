@@ -4,7 +4,7 @@
 }
 
 .profile__avatar-cover::before {
-  background-color: rgba(0,0,0,.8);
+  background-color: rgba(0, 0, 0, 0.8);
   background-image: url(../../../images/editIco.svg);
   background-position: 40%;
   background-repeat: no-repeat;
@@ -18,5 +18,11 @@
 }
 
 .profile__avatar-cover:hover::before {
-opacity: 1;
+  opacity: 1;
+}
+
+@media screen and (max-width: 768px) {
+  .profile__avatar-cover::before {
+    background-position: right 47% bottom 60%;
+  }
 }
