@@ -1,4 +1,4 @@
-import { apiConfig } from "./ApiConfig";
+import { apiConfig } from "./apiConfig";
 
 class Api {
   #url;
@@ -9,7 +9,7 @@ class Api {
     this.#headers = headers;
   }
 
-  #handleResponce(res) {
+  #handleResponse(res) {
     if (res.ok) {
       return res.json();
     } else {
@@ -17,12 +17,16 @@ class Api {
     }
   }
 
+  getAllInfo() {
+    return Promise.all([this.getCards(), this.getUserInfo()]);
+  }
+
   getUserInfo() {
     return fetch(`${this.#url}users/me`, {
       headers: this.#headers,
       method: "GET",
     }).then((res) => {
-      return this.#handleResponce(res);
+      return this.#handleResponse(res);
     });
   }
 
@@ -31,7 +35,7 @@ class Api {
       headers: this.#headers,
       method: "GET",
     }).then((res) => {
-      return this.#handleResponce(res);
+      return this.#handleResponse(res);
     });
   }
 
@@ -40,7 +44,7 @@ class Api {
       headers: this.#headers,
       method: "DELETE",
     }).then((res) => {
-      return this.#handleResponce(res);
+      return this.#handleResponse(res);
     });
   }
 
@@ -53,7 +57,7 @@ class Api {
         link,
       }),
     }).then((res) => {
-      return this.#handleResponce(res);
+      return this.#handleResponse(res);
     });
   }
 
@@ -66,7 +70,7 @@ class Api {
         about: data.about,
       }),
     }).then((res) => {
-      return this.#handleResponce(res);
+      return this.#handleResponse(res);
     });
   }
 
@@ -78,7 +82,7 @@ class Api {
         avatar: link,
       }),
     }).then((res) => {
-      return this.#handleResponce(res);
+      return this.#handleResponse(res);
     });
   }
 
@@ -87,7 +91,7 @@ class Api {
       method: like ? "DELETE" : "PUT",
       headers: this.#headers,
     }).then((res) => {
-      return this.#handleResponce(res);
+      return this.#handleResponse(res);
     });
   }
 }

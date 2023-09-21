@@ -23,16 +23,10 @@ function App() {
 
   React.useEffect(() => {
     api
-      .getUserInfo()
-      .then(setCurrentUser)
-      .catch((err) => console.log(err));
-  }, []);
-
-  React.useEffect(() => {
-    api
-      .getCards()
-      .then((res) => {
-        setCards(res);
+      .getAllInfo()
+      .then(([cardData, userData]) => {
+        setCurrentUser(userData);
+        setCards(cardData);
       })
       .catch((err) => console.log(err));
   }, []);
@@ -97,9 +91,12 @@ function App() {
   function handleCardDelete(card) {
     const cardId = card._id;
 
-    api.deleteCard(card._id).then(() => {
-      setCards((state) => state.filter((card) => card._id !== cardId));
-    });
+    api
+      .deleteCard(card._id)
+      .then(() => {
+        setCards((state) => state.filter((card) => card._id !== cardId));
+      })
+      .catch((res) => console.log(res));
   }
 
   function handleAddPlace(data) {

@@ -1,28 +1,35 @@
-function PopupWithForm(props) {
+function PopupWithForm({
+  name,
+  isOpen,
+  type,
+  title,
+  onSubmit,
+  children,
+  buttonName,
+  onClose,
+}) {
   return (
     <div
-      className={
-        `popup popup_type_${props.name}` + (props.isOpen && " popup_opened")
-      }
+      className={`popup popup_type_${name}` + (isOpen ? " popup_opened" : "")}
     >
-      <div className={`popup__container ${props.type}`}>
-        <h2 className="popup__title">{props.title}</h2>
+      <div className={`popup__container ${type}`}>
+        <h2 className="popup__title">{title}</h2>
         <form
           className="popup__form"
           action="#"
-          name={`form_type_${props.name}`}
-          onSubmit={props.onSubmit}
+          name={`form_type_${name}`}
+          onSubmit={onSubmit}
           noValidate
         >
-          {props.children}
+          {children}
           <button className="popup__submit" type="submit">
-            {props.buttonName}
+            {buttonName}
           </button>
         </form>
         <button
           className="popup__closed"
           type="button"
-          onClick={props.onClose}
+          onClick={onClose}
         ></button>
       </div>
     </div>

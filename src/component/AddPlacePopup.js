@@ -1,14 +1,14 @@
 import React from "react";
 import { PopupWithForm } from "./PopupWithForm";
 
-function AddPlacePopup(props) {
+function AddPlacePopup({ isOpen, onAddPlace, onClose }) {
   const [name, setName] = React.useState("");
   const [link, setLink] = React.useState("");
 
   React.useEffect(() => {
     setName("");
     setLink("");
-  }, [props.isOpen]);
+  }, [isOpen]);
 
   function handleChangeName(e) {
     setName(e.target.value);
@@ -20,7 +20,7 @@ function AddPlacePopup(props) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    props.onAddPlace({
+    onAddPlace({
       name,
       link,
     });
@@ -31,8 +31,8 @@ function AddPlacePopup(props) {
       name="add"
       title="Новое место"
       buttonName="Добавить"
-      isOpen={props.isOpen}
-      onClose={props.onClose}
+      isOpen={isOpen}
+      onClose={onClose}
       onSubmit={handleSubmit}
     >
       <label className="popup__label" htmlFor="card-name">
