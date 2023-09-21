@@ -1,4 +1,4 @@
-import { apiConfig } from "./apiConfig";
+import { apiConfig } from "./constants";
 
 class Api {
   #url;
