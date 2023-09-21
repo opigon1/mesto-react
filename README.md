@@ -2,7 +2,7 @@
 
 <img src="./images/mesto.png">
 
-<a href="https://opigon1.github.io/mesto/">Ссылка GitPages</a>
+<a href="https://opigon1.github.io/mesto-react/">Ссылка GitPages</a>
 
 <h2>Описание</h2>
 <p>Проект Место разработан в ходе обучения на курсе Яндекс практикум.</p>
