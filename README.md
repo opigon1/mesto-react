@@ -72,3 +72,5 @@ https://www.figma.com/file/PSdQFRHoxXJFs2FH8IXViF/JavaScript-9-sprint?node-id=0%
   <summary>Добавление и снятие лайка (включая счетчик лайков)</summary>
 
   <summary>Удаление карточки</summary>
+
+  <h3>Статус проекта: Завершён</h3>
