@@ -25,7 +25,7 @@ https://www.figma.com/file/PSdQFRHoxXJFs2FH8IXViF/JavaScript-9-sprint?node-id=0%
 
 <a name="installation"><h2>3. Установка и запуск приложения в локальном репозитории</h2></a>
 
-1. `git clone git@github.com:opigon1/mesto-react.git` - клонировать репозиторий (с использованием SSH) на свое устройство
+1. `git clone git@github.com:opigon1/mesto.git` - клонировать репозиторий (с использованием SSH) на свое устройство
 2. `npm i` - установить зависимости
 3. `npm run start` - запустить приложение в режиме разработчика (в браузере ввести ссылку `http://localhost:3000/`, если приложение не открылось там автоматически)
 
